@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>cmp2</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="container" style="margin: 350px">
+            <form method="POST" action="cmp.php">
+                <p><? echo($_GET['text']); ?></p>
+                <div class="form-group">
+                    <label>Length: 3, 알파벳 소문자로 이루어짐</label>
+                    <input type="password" name="pw" class="form-control" maxlength="3" placeholder="admin password">
+                </div>
+                <button type="submit" class="btn btn-primary">ADMIN LOGIN</button>
+            </form>
+        </div>    
+    </body>
+</html>

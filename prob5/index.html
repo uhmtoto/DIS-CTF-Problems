@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>comment</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122366977-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-122366977-1');
+        </script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="write" style="margin: 30px 50px;">
+            <form method="POST" action="comment.php">
+                <h2>Do NOT SQLi!!!</h2>
+                <h2>+답이 될 수 있는 comment가 확인되면 삭제합니다</h2>
+                <h2>Hint!! 관리자는 몇 분 마다 comment들을 확인합니다</h2>
+                <div class="form-group" style="margin: 20px 0 10px 0;">
+                    <label>Writter ID: </label>
+                    <input type="text" name="id" class="form-control col-5" maxlength="10" placeholder="ID"> <br>
+                    <label>Content</label>
+                    <input type="text" name="cnt" class="form-control col-5" maxlength="100" placeholder="Content">
+                </div>
+                <button type="submit" class="btn btn-dark">SUBMIT</button>
+            </form>
+        </div>
+        <div id="comments" style="margin: 20px 50px;">
+            <div class="card-column">
+                <?php
+                    include_once('../prob1/dbconfig.php');
+                    if(!isset($_COOKIE['usr'])) {
+                        setcookie('usr', 'usrusrusrusrusrusrusr', time() + 360000);
+                    }
+                    if($_COOKIE['usr']==='aXRzYWRtaW51c3Jjb29raWVoYWhhLg==') {
+                        echo "FLAG IS flag{!!!th1s_is_last_prob!!!}";
+                    }
+                    $Q = "select * from `dis_comments`";
+                    $res = mysql_query($Q, $conn);
+                    while($comment = mysql_fetch_array($res)) {
+                        echo ('<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">');
+                        echo ('<div class="card-header">Comment</div>');
+                        echo ('<div class="card-body">');
+                        echo ('<h5 class="card-title">Writter: '.$comment['id'].'</h5>');
+                        echo ('<p class="card-text">'.$comment['content'].'</p>');
+                        echo ('</div>');
+                        echo ('</div>');
+                    }
+                ?>
+            </div>
+        </div>
+    </body>
+</html>
