@@ -5,3 +5,5 @@
 급하게 만드느라 소스 구조가 엉망이긴 하지만, 문제 푸는데는 아무 이상은 없으니까 그냥 올림
 
 이 문제들 write-up은 일주일 안에 내 github에 올릴 예정
+## Write-Up
+link: https://github.com/uhmtoto/Write-Up/tree/master/DIS%20CTF%202018
